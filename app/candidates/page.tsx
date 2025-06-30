@@ -587,3 +587,165 @@ export default function CandidatesPage() {
     </div>
   )
 }
+
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import { Button } from "@/components/ui/button";
+// import {
+//   Card,
+//   CardHeader,
+//   CardTitle,
+//   CardContent,
+// } from "@/components/ui/card";
+// import { Input } from "@/components/ui/input";
+// import { Search } from "lucide-react";
+// import Link from "next/link";
+// import { Navigation } from "@/components/navigation";
+// import { Footer } from "@/components/footer";
+
+// interface Campaign {
+//   id: number;
+//   title: string;
+//   description: string;
+//   goal: number;
+//   end_date: string;
+//   photo: string;
+//   email: string;
+// }
+
+// export default function CandidatesPage() {
+//   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+//   const [searchTerm, setSearchTerm] = useState("");
+
+//   const API = process.env.NEXT_PUBLIC_API_BASE_URL!;
+//   const KEY = process.env.NEXT_PUBLIC_API_KEY!;
+
+//   useEffect(() => {
+//     async function load() {
+//       try {
+//         const res = await fetch(`${API}/api/v1/all_campaign`, {
+//           headers: { "x-api-key": KEY },
+//         });
+//          console.log(res);
+//         if (!res.ok) throw new Error(`Error ${res.status}`);
+//         const json = await res.json();
+//         const list: Campaign[] = Array.isArray(json)
+//           ? json
+//           : Array.isArray((json as any).campaigns)
+//             ? (json as any).campaigns
+//             : [];
+//         setCampaigns(list);
+//       } catch (e: any) {
+//         setError(e.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }
+//     load();
+//   }, [API, KEY]);
+ 
+
+//   const filtered = campaigns.filter((c) =>
+//     c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//     c.description.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
+
+//   if (loading) {
+//     return (
+//       <div className="flex min-h-screen items-center justify-center">
+//         <p>Loading campaigns…</p>
+//       </div>
+//     );
+//   }
+//   if (error) {
+//     return (
+//       <div className="flex min-h-screen items-center justify-center">
+//         <p className="text-red-600">Error: {error}</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+//       <Navigation />
+
+//       {/* Header */}
+//       <section className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-12">
+//         <div className="max-w-4xl mx-auto px-4 text-center">
+//           <h1 className="text-4xl font-bold mb-2">Campaigns</h1>
+//           <p className="text-lg opacity-80">
+//             Browse our active campaigns and make a difference today
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* Search */}
+//       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+//         <div className="relative max-w-md mx-auto">
+//           <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+//           <Input
+//             type="text"
+//             placeholder="Search by title or description…"
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//             className="pl-10"
+//           />
+//         </div>
+//       </div>
+
+//       {/* Cards */}
+//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+//         {filtered.map((c) => (
+//           <Card key={c.id} className="border shadow-sm">
+//             {/* Photo */}
+//             {c.photo && (
+//               <img
+//                 src={`${API}/uploads/${c.photo}`}
+//                 alt={c.title}
+//                 className="w-full h-40 object-cover rounded-t"
+//               />
+//             )}
+//             <CardHeader>
+//               <CardTitle className="truncate">{c.title}</CardTitle>
+//             </CardHeader>
+//             <CardContent className="space-y-2">
+//               <p className="text-sm text-gray-700 line-clamp-3">
+//                 {c.description}
+//               </p>
+//               <div className="flex justify-between text-sm text-gray-600">
+//                 <span>Goal: ${c.goal.toLocaleString()}</span>
+//                 <span>
+//                   Ends:{" "}
+//                   {new Date(c.end_date).toLocaleDateString(undefined, {
+//                     year: "numeric",
+//                     month: "short",
+//                     day: "numeric",
+//                   })}
+//                 </span>
+//               </div>
+//               <div className="flex justify-between items-center pt-4">
+//                 <span className="text-xs text-gray-500">Contact: {c.email}</span>
+//                 <Link href={`/candidates/${c.id}`}>
+//                   <Button className="bg-red-600 hover:bg-red-700 text-white py-1 px-3 text-sm">
+//                     View Details
+//                   </Button>
+//                 </Link>
+//               </div>
+//             </CardContent>
+//           </Card>
+//         ))}
+
+//         {filtered.length === 0 && (
+//           <p className="col-span-full text-center text-gray-500">
+//             No campaigns found.
+//           </p>
+//         )}
+//       </div>
+
+//       <Footer />
+//     </div>
+//   );
+// }
