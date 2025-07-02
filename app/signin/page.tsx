@@ -306,7 +306,7 @@ export default function SignInPage() {
               </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
-            <p className="mt-2 text-gray-600">Sign in to your WinRed account</p>
+            <p className="mt-2 text-gray-600">Sign in to your VictoryVault account</p>
           </div>
 
           <Card className="border-red-100 shadow-lg">
