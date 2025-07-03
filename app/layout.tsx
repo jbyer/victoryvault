@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
-import { Providers } from "./provider";
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'VictoryVault',
+  description: 'Created by Jason Byer',
+  generator: 'Jason Byer',
 }
 
 export default function RootLayout({
@@ -15,11 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Providers>
-          {children}
-        </Providers>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
