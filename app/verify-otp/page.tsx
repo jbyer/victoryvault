@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Mail, ArrowLeft, RotateCcw } from "lucide-react"
 import { OtpInput } from "@/components/otp-input"
-import { sendOtp, verifyOtp } from "../auth/actions"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Navigation } from "@/components/navigation"
